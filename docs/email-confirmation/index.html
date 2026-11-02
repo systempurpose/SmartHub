@@ -4,10 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Email Confirmation - SmartHub</title>
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<meta name="theme-color" content="#020617">
+<link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
   <main class="wrap">
+    <a class="brand" href="../"><img src="../img/logo-96.png" alt="" width="44" height="44"><span>Smart<b>Hub</b></span></a>
     <section class="card">
       <span class="badge">Email Confirmation</span>
       <h1>Email confirmed successfully</h1>
@@ -16,12 +21,31 @@
       </p>
 
       <div class="actions">
-        <a class="btn primary" href="https://github.com/23sc4122ms-sys/SmartHub/releases/latest">Download Windows App</a>
+        <a class="btn primary" href="https://www.dropbox.com/scl/fi/1s0gd5k9ttdr7ecaezu7v/SmartHubSetup.exe?rlkey=remhl411l6yppnxybhbspistg&amp;st=cs0y24pg&amp;dl=1">Download Windows App</a>
         <a class="btn secondary" href="../">Back to Website</a>
+        <a class="btn secondary" href="../reset-password/">Reset Password Page</a>
       </div>
 
-      <p class="kv">Confirmation URL: <code>https://23sc4122ms-sys.github.io/SmartHub/email-confirmation/</code></p>
+      <p class="kv">Confirmation URL: <code id="confirm-url">Loading...</code></p>
+      <p class="kv">Password reset URL: <code id="reset-url">Loading...</code></p>
+      <p class="kv">Password changed URL: <code id="changed-url">Loading...</code></p>
     </section>
   </main>
+
+  <script>
+    (function () {
+      const baseUrl = new URL('../', window.location.href).toString();
+      const confirmUrl = new URL('./', window.location.href).toString();
+      const resetUrl = new URL('./reset-password/', baseUrl).toString();
+      const changedUrl = new URL('./password-changed/', baseUrl).toString();
+
+      const c = document.getElementById('confirm-url');
+      const r = document.getElementById('reset-url');
+      const p = document.getElementById('changed-url');
+      if (c) c.textContent = confirmUrl;
+      if (r) r.textContent = resetUrl;
+      if (p) p.textContent = changedUrl;
+    })();
+  </script>
 </body>
 </html>

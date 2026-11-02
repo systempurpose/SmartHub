@@ -1,28 +1,284 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SmartHub Website</title>
-  <link rel="stylesheet" href="./styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartHub – Android Diagnostic Tool for Windows</title>
+<meta name="description" content="SmartHub is a Windows desktop tool for phone repair technicians: hardware tests, connection fixes, app security scan, boot diagnosis, data recovery and AI conclusions over ADB.">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
+<link rel="apple-touch-icon" href="./img/apple-touch-icon.png">
+<meta name="theme-color" content="#020617">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SmartHub">
+<meta property="og:title" content="SmartHub – Android Diagnostic Tool for Windows">
+<meta property="og:description" content="Hardware tests, connection fixes, app security scan, boot diagnosis and data recovery for phone repair technicians.">
+<meta property="og:image" content="https://smarthub-site-phi.vercel.app/img/og-image.png">
+<meta property="og:url" content="https://smarthub-site-phi.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://smarthub-site-phi.vercel.app/img/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SmartHub","applicationCategory":"UtilitiesApplication","operatingSystem":"Windows 10, Windows 11","description":"Windows desktop tool for phone repair technicians: hardware tests, connection fixes, app security scan, boot diagnosis, data recovery and AI conclusions over ADB.","image":"https://smarthub-site-phi.vercel.app/img/og-image.png","url":"https://smarthub-site-phi.vercel.app/"}</script>
+<link rel="canonical" href="https://smarthub-site-phi.vercel.app/">
+<link rel="alternate" hreflang="en" href="https://smarthub-site-phi.vercel.app/">
+<link rel="alternate" hreflang="fil" href="https://smarthub-site-phi.vercel.app/fil/">
+<link rel="stylesheet" href="./styles.css">
+<style>
+html{scroll-behavior:smooth}body{overflow-x:hidden}
+.w{max-width:1160px;margin:0 auto;padding:0 20px}
+.fx{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.fx i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;animation:dr 18s ease-in-out 2 alternate}
+.fx i:nth-child(1){width:520px;height:520px;background:#22d3ee;top:-140px;left:-140px}
+.fx i:nth-child(2){width:460px;height:460px;background:#6366f1;top:35%;right:-150px;animation-delay:-6s}
+.fx i:nth-child(3){width:380px;height:380px;background:#0ea5e9;bottom:-140px;left:35%;animation-delay:-12s}
+.fx::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(148,163,184,.06) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(148,163,184,.06) 1px,transparent 1px) 0 0/48px 48px;-webkit-mask-image:radial-gradient(ellipse at 50% 20%,#000,transparent 75%);mask-image:radial-gradient(ellipse at 50% 20%,#000,transparent 75%)}
+@keyframes dr{to{transform:translate(90px,60px) scale(1.18)}}
+.bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:99;background:linear-gradient(90deg,#22d3ee,#818cf8)}
+nav.nv{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(2,6,23,.6);border-bottom:1px solid var(--border)}
+nav.nv .w{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.lg{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;color:var(--text);text-decoration:none}.lg b{color:var(--accent)}.lg img{border-radius:9px;display:block}
+.lk{display:flex;gap:4px;align-items:center}.lk a:not(.btn){color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px 12px;border-radius:8px;transition:.2s}
+.lk a:not(.btn):hover{color:var(--text);background:rgba(148,163,184,.12)}
+.lk .btn{padding:8px 14px;font-size:14px}
+.btn{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{box-shadow:0 0 0 0 rgba(34,211,238,.6);animation:pl 2.4s 3}
+@keyframes pl{70%{box-shadow:0 0 0 14px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
+@keyframes sw{60%,100%{left:130%}}
+.hero{display:grid;grid-template-columns:.95fr 1.35fr;gap:44px;align-items:center;padding:64px 0 34px}
+.hero h1{font-size:44px;line-height:1.08;margin:16px 0}
+.gr{background:linear-gradient(90deg,#22d3ee,#818cf8,#22d3ee);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+.lead{font-size:18px}
+.badge{animation:fd .8s both}
+.hero .actions{margin-top:24px}
+.hero h1,.hero .lead,.hero .actions,.hero .note{animation:fu .9s both}.hero .lead{animation-delay:.12s}.hero .actions{animation-delay:.24s}.hero .note{animation-delay:.36s}
+@keyframes fu{from{opacity:0;transform:translateY(26px)}}@keyframes fd{from{opacity:0;transform:translateY(-12px)}}
+.note{font-size:13px;margin-top:14px}
+.stage{position:relative;padding:0 40px 150px 0;animation:fu 1s .2s both}
+.win{display:block;position:relative;cursor:zoom-in;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(2,6,23,.8),0 0 60px rgba(34,211,238,.15);animation:fl 7s ease-in-out infinite}.win img{display:block;width:100%;height:auto}.zh{position:absolute;right:12px;top:34px;font-size:12px;font-weight:700;padding:5px 10px;border-radius:99px;background:rgba(2,6,23,.8);color:#e5e7eb;border:1px solid var(--border)}
+#lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}#lb::backdrop{background:rgba(2,6,23,.88)}#lb img{display:block;max-width:96vw;max-height:94vh;width:auto;height:auto;border-radius:12px;cursor:zoom-out}
+.ph{position:absolute;right:0;bottom:0;width:112px;height:220px;border-radius:26px;border:3px solid #334155;background:linear-gradient(160deg,#0f172a,#082f49);box-shadow:0 24px 50px rgba(2,6,23,.8),0 0 40px rgba(56,189,248,.25);overflow:hidden;animation:fl 5.5s -2s ease-in-out infinite}
+.ph::before{content:"";position:absolute;top:7px;left:50%;width:42px;height:6px;margin-left:-21px;border-radius:9px;background:#020617}
+.ph em{position:absolute;left:0;right:0;height:46px;top:0;background:linear-gradient(180deg,transparent,rgba(34,211,238,.45));border-bottom:2px solid var(--accent);animation:sc 3s ease-in-out infinite alternate}
+@keyframes sc{from{top:-6px}to{top:calc(100% - 44px)}}
+.ph u{position:absolute;left:8px;right:8px;text-decoration:none;font-size:9px;white-space:nowrap;color:#a5f3fc;border:1px solid rgba(34,211,238,.35);background:rgba(2,6,23,.55);border-radius:8px;padding:5px 7px}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.mq{overflow:hidden;padding:14px 0;border-block:1px solid var(--border);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.tk{display:flex;gap:12px;width:max-content;animation:mq 38s linear infinite}.mq:hover .tk{animation-play-state:paused}
+.tk span{padding:7px 16px;border:1px solid var(--border);border-radius:99px;color:var(--muted);font-weight:700;font-size:13px;white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:46px 0 0}
+.st{border:1px solid var(--border);border-radius:16px;padding:20px;background:rgba(11,18,32,.7);text-align:center}
+.st b{display:block;font-size:40px;line-height:1;background:linear-gradient(135deg,#22d3ee,#818cf8);-webkit-background-clip:text;background-clip:text;color:transparent}.st span{font-size:13px;color:var(--muted)}
+.sec{margin-top:92px}.sec h2{font-size:34px;margin:0 0 8px;text-align:center}.sec>.w>p{text-align:center;max-width:620px;margin:0 auto 34px}
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.fc{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:18px;padding:22px;background:linear-gradient(135deg,rgba(11,18,32,.95),rgba(17,24,39,.9));transition:transform .3s,border-color .3s}
+.fc:hover{transform:translateY(-6px);border-color:rgba(34,211,238,.5)}
+.fc::before{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(34,211,238,.17),transparent 60%);opacity:0;transition:opacity .3s}.fc:hover::before{opacity:1}
+.ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:23px;margin-bottom:14px;background:linear-gradient(135deg,rgba(34,211,238,.25),rgba(99,102,241,.25));border:1px solid rgba(34,211,238,.3);transition:transform .4s}.fc:hover .ic{transform:rotate(-8deg) scale(1.12)}
+.fc h3{margin:0 0 7px;font-size:18px;position:relative}.fc p{margin:0;font-size:14px;position:relative}
+.tg{display:inline-block;margin-top:13px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:3px 9px;position:relative}.tg.a{color:var(--accent);border-color:rgba(34,211,238,.45)}
+.sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;position:relative}
+.sp::before{content:"";position:absolute;top:36px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.4}
+.sx{text-align:center;position:relative;padding:0 6px}
+.sx i{width:72px;height:72px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:28px;font-weight:800;color:#0b1220;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 0 0 8px rgba(34,211,238,.12)}
+.sx b{display:block;margin-bottom:5px;font-size:17px}.sx span{font-size:14px;color:var(--muted);line-height:1.55}
+.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px}
+.cp{display:flex;flex-wrap:wrap;gap:8px}
+.cp span{font-size:12.5px;padding:6px 12px;border-radius:99px;border:1px solid var(--border);background:rgba(2,6,23,.5);color:#cbd5e1;transition:.2s;animation:pop .5s calc(var(--i)*35ms) both paused}
+.cp.in span{animation-play-state:running}.cp span:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+@keyframes pop{from{opacity:0;transform:scale(.6)}}
+.cta{margin-top:92px;text-align:center;border-radius:26px;padding:60px 24px;position:relative;overflow:hidden;border:1px solid rgba(34,211,238,.4);background:radial-gradient(circle at 50% 0,rgba(34,211,238,.22),transparent 60%),#0b1220}
+.cta h2{font-size:36px;margin:0 0 10px}.cta p{max-width:560px;margin:0 auto 24px}
+.cta .btn{font-size:18px;padding:15px 30px}
+.ft{text-align:center;padding:40px 0 34px;font-size:13px;color:var(--muted)}.ft code{color:#cbd5e1;background:rgba(2,6,23,.65);border:1px solid var(--border);border-radius:8px;padding:3px 6px}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}.rv.in{opacity:1;transform:none}
+
+.dlinfo{margin-top:18px;max-width:470px;border:1px solid var(--border);border-radius:14px;padding:14px 16px;background:rgba(11,18,32,.6);font-size:13px;animation:fu .9s .45s both}
+.dlinfo dl{margin:0;display:grid;gap:6px}.dlinfo dl div{display:flex;gap:10px;justify-content:space-between}
+.dlinfo dt{color:var(--muted)}.dlinfo dd{margin:0;text-align:right}.dlinfo .hash{font-family:ui-monospace,Consolas,monospace;font-size:11px;word-break:break-all}
+.dlinfo [hidden]{display:none}
+.dlinfo .mirror{margin:10px 0 0}.dlinfo a{color:var(--accent)}
+.ss{margin-top:10px;border-top:1px solid var(--border);padding-top:10px}.ss summary{cursor:pointer;color:var(--accent);font-weight:600}.ss p{margin:8px 0 0;color:var(--muted);line-height:1.55}.ss code{color:#cbd5e1}
+.mm{display:none;position:relative}
+.mm summary{list-style:none;cursor:pointer;width:42px;height:38px;border:1px solid var(--border);border-radius:10px;display:grid;place-items:center}
+.mm summary::-webkit-details-marker{display:none}
+.mm summary span,.mm summary span::before,.mm summary span::after{display:block;width:18px;height:2px;background:var(--text);border-radius:2px;content:"";position:relative}
+.mm summary span::before{position:absolute;top:-6px}.mm summary span::after{position:absolute;top:6px}
+.mp{position:absolute;right:0;top:48px;min-width:200px;display:grid;padding:8px;border:1px solid var(--border);border-radius:14px;background:rgba(2,6,23,.96)}
+.mp a{color:var(--text);text-decoration:none;font-weight:600;padding:12px 14px;border-radius:8px}.mp a:hover{background:rgba(148,163,184,.12)}
+.mql{text-align:center;color:var(--muted);font-size:13px;margin:34px 0 10px}
+.faq{max-width:760px;margin:0 auto;display:grid;gap:10px}
+.faq details{border:1px solid var(--border);border-radius:14px;padding:4px 18px;background:rgba(11,18,32,.7)}
+.faq summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";color:var(--accent);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"\2212"}.faq p{margin:0 0 16px;color:var(--muted);line-height:1.6}
+.ft a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--accent);color:#04202a;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none}.skip:focus{top:10px}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+.nonwin{display:none;margin:0 0 14px;padding:10px 14px;border:1px solid rgba(251,191,36,.5);border-radius:12px;background:rgba(251,191,36,.08);color:#fde68a;font-size:14px;max-width:470px}
+.nonwin.show{display:block}
+@media(max-width:900px),(prefers-reduced-data:reduce){.fx i{filter:none;animation:none;opacity:.22}.fx i:nth-child(3){display:none}}
+@media(max-width:900px){.mm{display:block}.hero{grid-template-columns:1fr;padding-top:40px}.hero h1{font-size:38px}.stage{max-width:620px;margin:0 auto;width:100%;padding:0}.lk a:not(.btn){display:none}.cl{grid-template-columns:1fr}.sp::before{display:none}}
+@media(max-width:480px){.hero h1{font-size:32px}.sec h2,.cta h2{font-size:27px}.ph{display:none}.stage{padding:0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+<noscript><style>.rv{opacity:1;transform:none}.cp span{animation:none}</style></noscript>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card">
-      <span class="badge">SmartHub Portal</span>
-      <h1>Download SmartHub Windows App</h1>
-      <p>
-        This website is hosted on GitHub Pages. Registration and sign-in are done inside the
-        SmartHub Windows app, and email confirmation redirects here.
-      </p>
+<a class="skip" href="#main">Skip to content</a>
+<div class="fx"><i></i><i></i><i></i></div><div class="bar" id="bar"></div>
 
-      <div class="actions">
-        <a class="btn primary" href="https://github.com/23sc4122ms-sys/SmartHub/releases/latest">Download Latest Release</a>
-        <a class="btn secondary" href="./email-confirmation/">Email Confirmation Page</a>
-      </div>
+<nav class="nv"><div class="w">
+  <a class="lg" href="./"><img src="./img/logo-96.png" alt="" width="36" height="36"><span>Smart<b>Hub</b></span></a>
+  <div class="lk"><a href="#features">Features</a><a href="#how">How it works</a><a href="#checks">What it checks</a><a href="#faq">FAQ</a><a href="./fil/" hreflang="fil" lang="fil">Filipino</a>
+  <a class="btn primary" href="#download" data-dl>Download</a></div>
+  <details class="mm"><summary aria-label="Menu"><span></span></summary>
+    <div class="mp"><a href="#features">Features</a><a href="#how">How it works</a><a href="#checks">What it checks</a><a href="#faq">FAQ</a><a href="./fil/" hreflang="fil" lang="fil">Filipino</a></div>
+  </details>
+</div></nav>
 
-      <p class="kv">Website URL: <code>https://23sc4122ms-sys.github.io/SmartHub/</code></p>
-    </section>
-  </main>
+<main class="w" id="main" tabindex="-1">
+<header class="hero">
+  <div>
+    <span class="badge">For phone repair technicians</span>
+    <h1>Diagnose and repair <span class="gr">Android phones</span> in minutes</h1>
+    <p class="lead">SmartHub is a Windows app that talks to a phone over USB. Run hardware tests, fix Wi-Fi and Bluetooth, scan for spyware, diagnose phones that will not boot and recover data, all from one dashboard.</p>
+    <p class="nonwin" id="nonwin" role="note">SmartHub runs on <b>Windows 10/11</b> only. Open this page on your Windows PC to download it, or bookmark it for later.</p>
+    <div class="actions">
+      <a class="btn primary" href="#download" data-dl>⬇ Download for Windows</a>
+      <a class="btn secondary" href="#features">Explore features</a>
+    </div>
+    <p class="note">Sign-up and sign-in happen inside the Windows app.</p>
+    <div class="dlinfo" id="download">
+      <dl>
+        <div><dt>Version</dt><dd id="d-ver">Alpha release</dd></div>
+        <div><dt>Platform</dt><dd>Windows 10 / 11, 64-bit</dd></div>
+        <div hidden id="d-size-row"><dt>File size</dt><dd id="d-size"></dd></div>
+        <div hidden id="d-hash-row"><dt>SHA-256</dt><dd class="hash" id="d-hash"></dd></div>
+      </dl>
+      <p class="mirror" id="d-mirror" hidden>Download not starting? <a id="d-mirror-a" href="#" rel="noopener">Use the mirror link</a>.</p>
+      <details class="ss">
+        <summary>Windows shows a SmartScreen warning?</summary>
+        <p>SmartHub is an early alpha and the installer is not code-signed yet, so Windows may say it &ldquo;protected your PC&rdquo;. Click <b>More info</b>, then <b>Run anyway</b>.<span id="d-hash-help" hidden> To check the file is untouched, compare its SHA-256 with the value above (PowerShell: <code>Get-FileHash .\SmartHubSetup.exe</code>).</span></p>
+      </details>
+    </div>
+  </div>
+  <div class="stage">
+    <a class="win" href="./img/dashboard.webp" id="zoom" aria-label="Enlarge the SmartHub dashboard screenshot"><img src="./img/dashboard-hero.webp" alt="SmartHub dashboard with device card, Storage Analysis, App Security Scan, Install Android App, Help and the Software Safety panel" width="1440" height="640" fetchpriority="high"><span class="zh">🔍 Click to enlarge</span></a>
+    <div class="ph" aria-hidden="true"><em></em><u style="top:40px">📶 Signal strong</u><u style="top:92px">🔋 Battery healthy</u><u style="top:144px">🛡 Scan complete</u></div>
+  </div>
+</header>
+
+<p class="mql">Built for Android phones from brands like</p>
+<div class="mq" aria-hidden="true"><div class="tk" id="tk"><span>Samsung</span><span>Xiaomi</span><span>OPPO</span><span>vivo</span><span>realme</span><span>OnePlus</span><span>Huawei</span><span>Honor</span><span>Motorola</span><span>Sony</span><span>ASUS</span><span>Nokia</span><span>Lenovo</span><span>TECNO</span><span>Infinix</span><span>itel</span><span>ZTE</span><span>TCL</span><span>MediaTek</span><span>Qualcomm</span><span>Unisoc</span></div></div>
+
+<div class="stats">
+  <div class="st rv"><b data-n="23">23</b><span>hardware tests</span></div>
+  <div class="st rv" style="--d:.1s"><b data-n="24">24</b><span>advanced software checks</span></div>
+  <div class="st rv" style="--d:.2s"><b data-n="30" data-s="+">30+</b><span>USB driver brands</span></div>
+  <div class="st rv" style="--d:.3s"><b data-n="4">4</b><span>data recovery tools</span></div>
+</div>
+
+<section class="sec" id="features"><div class="w">
+  <h2 class="rv">Everything a repair bench needs</h2>
+  <p class="rv">Every page of the app, built around a connected Android phone.</p>
+  <div class="fg" id="fg">
+    <article class="fc rv" style="--d:0.0s"><div class="ic" aria-hidden="true">📊</div><h3>Dashboard</h3><p>Device card with model, Android version, patch and battery, quick actions, and a Software Safety panel: root, Play Protect, unknown sources, USB debugging and suspicious apps.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.1s"><div class="ic" aria-hidden="true">🔬</div><h3>Hardware Tests</h3><p>23 guided tests: display, touch, sensors, cameras, speaker, microphone, NFC and more.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.2s"><div class="ic" aria-hidden="true">🌐</div><h3>Connection Troubleshoot</h3><p>Diagnose Wi-Fi, Bluetooth and mobile data, then apply targeted fixes.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.0s"><div class="ic" aria-hidden="true">🧪</div><h3>Advanced Diagnostic</h3><p>24 software checks covering crashes, thermals, battery health, storage speed and more.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.1s"><div class="ic" aria-hidden="true">🛡️</div><h3>App Security Scan</h3><p>Find spyware and adware with risk scores, deep APK analysis, Uninstall and False Positive.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.2s"><div class="ic" aria-hidden="true">🗂️</div><h3>Storage Analysis</h3><p>Find large files, group them by category, and delete or uninstall from the results.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.0s"><div class="ic" aria-hidden="true">⚠️</div><h3>Boot Status</h3><p>For phones that will not start: boot-loop tracking and fastboot, EDL and Download mode detection.</p><span class="tg">Works without ADB</span></article>
+    <article class="fc rv" style="--d:0.1s"><div class="ic" aria-hidden="true">🔧</div><h3>Boot Mode</h3><p>Lock and root scan, bootloader tools, reboot to recovery and interactive per-brand guides.</p><span class="tg">Works without ADB</span></article>
+    <article class="fc rv" style="--d:0.2s"><div class="ic" aria-hidden="true">💾</div><h3>Data Recovery</h3><p>Restore, Browse, Backup and Deep Scan with a photo carver for rooted phones.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.0s"><div class="ic" aria-hidden="true">🤖</div><h3>AI Conclusion</h3><p>Turns your results into a plain-language cause, next steps and helpful web resources.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.1s"><div class="ic" aria-hidden="true">📱</div><h3>Device Info and Live Screen</h3><p>Hardware details, paired devices, and a live screen view with text reading.</p><span class="tg a">Needs connected phone</span></article>
+    <article class="fc rv" style="--d:0.2s"><div class="ic" aria-hidden="true">🔌</div><h3>USB Drivers</h3><p>Open the official driver page for 30+ phone and chipset brands.</p><span class="tg">Works without ADB</span></article>
+    <article class="fc rv" style="--d:0.0s"><div class="ic" aria-hidden="true">👥</div><h3>Community</h3><p>Posts, short repair videos, search, alerts and profiles for technicians.</p><span class="tg">Account required</span></article>
+    <article class="fc rv" style="--d:0.1s"><div class="ic" aria-hidden="true">⚙️</div><h3>Settings</h3><p>Pick your theme colors and switch between English and Filipino.</p><span class="tg">Local</span></article>
+  </div>
+</div></section>
+
+<section class="sec" id="how"><div class="w">
+  <h2 class="rv">Up and running in 4 steps</h2>
+  <p class="rv">A built-in USB debugging wizard helps if you get stuck.</p>
+  <div class="sp">
+    <div class="sx rv"><i>1</i><b>Install SmartHub</b><span>Download the Windows installer and run it.</span></div>
+    <div class="sx rv" style="--d:.12s"><i>2</i><b>Enable USB debugging</b><span>Settings, About Phone, tap Build Number 7 times, then turn on USB Debugging.</span></div>
+    <div class="sx rv" style="--d:.24s"><i>3</i><b>Connect by USB</b><span>Plug in the phone and accept the RSA prompt on its screen.</span></div>
+    <div class="sx rv" style="--d:.36s"><i>4</i><b>Run a scan</b><span>Press Quick Scan, or open any tool from the sidebar.</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="checks"><div class="w">
+  <h2 class="rv">What it checks</h2>
+  <p class="rv">The full list behind the numbers.</p>
+  <div class="cl">
+    <div class="fc rv"><h3>🔬 23 hardware tests</h3><div class="cp" id="hw" style="margin-top:12px;position:relative"><span style="--i:0">Battery</span><span style="--i:1">Storage</span><span style="--i:2">Display</span><span style="--i:3">Sensors</span><span style="--i:4">Proximity</span><span style="--i:5">Gyro</span><span style="--i:6">GPS</span><span style="--i:7">Magnetometer</span><span style="--i:8">Touch</span><span style="--i:9">Multi-touch</span><span style="--i:10">Buttons</span><span style="--i:11">Vibration</span><span style="--i:12">Fingerprint</span><span style="--i:13">Face unlock</span><span style="--i:14">Front camera</span><span style="--i:15">Rear camera</span><span style="--i:16">Flashlight</span><span style="--i:17">Color sweep</span><span style="--i:18">Speaker</span><span style="--i:19">Microphone</span><span style="--i:20">Headphone</span><span style="--i:21">NFC</span><span style="--i:22">IR blaster</span></div></div>
+    <div class="fc rv" style="--d:.12s"><h3>🧪 24 advanced checks</h3><div class="cp" id="adv" style="margin-top:12px;position:relative"><span style="--i:0">App crashes</span><span style="--i:1">ANR</span><span style="--i:2">Kernel panic</span><span style="--i:3">Service crashes</span><span style="--i:4">Storage health</span><span style="--i:5">Wakeups</span><span style="--i:6">UI jank</span><span style="--i:7">Network stack</span><span style="--i:8">Thermal throttling</span><span style="--i:9">Ghost touch</span><span style="--i:10">CPU temp</span><span style="--i:11">Battery voltage</span><span style="--i:12">Battery health</span><span style="--i:13">Signal strength</span><span style="--i:14">Network type</span><span style="--i:15">Storage speed</span><span style="--i:16">Storage I/O</span><span style="--i:17">Memory leaks</span><span style="--i:18">Sensors</span><span style="--i:19">Root status</span><span style="--i:20">Security patch</span><span style="--i:21">Charging current</span><span style="--i:22">Cycle count</span><span style="--i:23">Charging type</span></div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="faq"><div class="w">
+  <h2 class="rv">Questions before you install</h2>
+  <p class="rv">Short answers for technicians and shop owners.</p>
+  <div class="faq rv">
+    <details><summary>Does it work on iPhone?</summary><p>No. SmartHub is built for Android phones and talks to them over ADB (USB debugging). Some tools, such as Boot Status and USB Drivers, also help with phones that cannot start.</p></details>
+    <details><summary>Do I need to root the phone?</summary><p>No. Most tools work on an unrooted phone. Deep Scan and the photo carver in Data Recovery need a rooted phone.</p></details>
+    <details><summary>Why does Windows warn me about the installer?</summary><p>This is an early alpha and the installer is not code-signed yet, so SmartScreen shows a warning for new, unsigned files. Use <b>More info</b>, then <b>Run anyway</b> only if you downloaded it from this page.</p></details>
+    <details><summary>My phone is not detected. What now?</summary><p>Turn on USB Debugging (tap Build Number 7 times in About Phone), use a data-capable cable, accept the RSA prompt on the phone and install the right USB driver. The app has a built-in wizard and a USB Drivers page for 30+ brands.</p></details>
+    <details><summary>Do I need an account?</summary><p>Sign-up and sign-in happen inside the Windows app. An account is needed for Community features.</p></details>
+    <details><summary>Is it legal to use on any phone?</summary><p>Use repair, recovery and unlock tools only on devices you own or have permission to service.</p></details>
+  </div>
+  <p class="rv" id="support" hidden style="margin-top:22px">Found a bug or need help? <a id="support-a" href="#">Contact support</a>.</p>
+</div></section>
+
+<section class="cta rv">
+  <h2>Ready to fix phones faster?</h2>
+  <p>Download SmartHub for Windows and connect your first phone in under five minutes.</p>
+  <a class="btn primary" href="#download" data-dl>⬇ Download SmartHub for Windows</a>
+</section>
+
+<footer class="ft">
+  <p>© <span id="yr">2026</span> SmartHub · <a href="#faq">FAQ</a> · <a href="#download">Download</a></p>
+  <p>SmartHub is a diagnostic aid. Use repair and unlock tools only on devices you own or have permission to service.</p>
+</footer>
+</main>
+
+<dialog id="lb"><img src="./img/dashboard.webp" alt="SmartHub dashboard, full size" width="1440" height="858"></dialog>
+<script>
+(function(){
+/* ===== EDIT HERE: one place for download details ===== */
+var REL={
+ url:"https://www.dropbox.com/scl/fi/1s0gd5k9ttdr7ecaezu7v/SmartHubSetup.exe?rlkey=remhl411l6yppnxybhbspistg&st=cs0y24pg&dl=1",
+ version:"Alpha release",
+ size:"",      /* e.g. "84 MB" */
+ sha256:"",    /* paste the SHA-256 of SmartHubSetup.exe */
+ mirror:"",    /* optional backup download URL */
+ support:"mailto:smarthub3121@gmail.com"    /* e.g. "mailto:you@example.com" or a Facebook/Discord link */
+};
+/* ===================================================== */
+var $=function(s){return document.querySelector(s)};
+document.querySelectorAll("[data-dl]").forEach(function(a){a.href=REL.url});
+$("#d-ver").textContent=REL.version;
+if(REL.size){$("#d-size").textContent=REL.size;$("#d-size-row").hidden=false}
+if(REL.sha256){$("#d-hash").textContent=REL.sha256;$("#d-hash-row").hidden=false;$("#d-hash-help").hidden=false}
+if(REL.mirror){$("#d-mirror-a").href=REL.mirror;$("#d-mirror").hidden=false}
+if(REL.support){$("#support-a").href=REL.support;$("#support").hidden=false}
+$("#yr").textContent=new Date().getFullYear();
+var lb=$("#lb");$("#zoom").addEventListener("click",function(e){if(lb.showModal){e.preventDefault();lb.showModal()}});lb.addEventListener("click",function(){lb.close()});
+var ua=navigator.userAgent||"";if(!/Windows/i.test(ua)){$("#nonwin").classList.add("show")}
+var tk=$("#tk");tk.innerHTML+=tk.innerHTML;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add("in");io.unobserve(t);
+var n=t.querySelector("[data-n]");if(n){var to=+n.dataset.n,s=n.dataset.s||"",st=performance.now();n.textContent="0";(function f(now){var p=Math.min((now-st)/1400,1);n.textContent=Math.round(to*(1-Math.pow(1-p,3)))+(p<1?"":s);if(p<1)requestAnimationFrame(f)})(st)}})},{threshold:.15});
+document.querySelectorAll(".rv,.cp").forEach(function(e){io.observe(e)});
+document.addEventListener("mousemove",function(e){var c=e.target.closest&&e.target.closest(".fc");if(!c)return;var r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")});
+document.querySelectorAll(".mp a").forEach(function(a){a.addEventListener("click",function(){a.closest("details").open=false})});
+addEventListener("scroll",function(){var d=document.documentElement;$("#bar").style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+"%"},{passive:true});
+})();
+</script>
 </body>
 </html>
